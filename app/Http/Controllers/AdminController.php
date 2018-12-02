@@ -230,7 +230,7 @@ class AdminController extends Controller
         $notif = $contact + $ordertour + $ordertravel + $member;
         $city = DB::table('cities')->get();
 
-        $tourcontent = DB::table('tours')->select('cities.name', 'tours.id', 'tours.paket', 'tours.durasi', 'tours.harga', 'tours.keterangan', 'tours.url', 'tours.fasilitas', 'tours.transportasi', 'tours.created_at')->leftjoin('cities', 'tours.city_id', '=', 'cities.id')->get();
+        $tourcontent = DB::table('tours')->select('cities.name', 'tours.id', 'tours.paket', 'tours.durasi', 'tours.harga', 'tours.keterangan', 'tours.url', 'tours.fasilitas', 'tours.transportasi', 'tours.created_at','tours.status')->leftjoin('cities', 'tours.city_id', '=', 'cities.id')->get();
         return view('admin.panel.content.tour', compact('sql', 'contact', 'ordertour', 'ordertravel', 'member', 'notif', 'tourcontent', 'city'));
     }
 
@@ -303,6 +303,19 @@ class AdminController extends Controller
         $city = DB::table('cities')->get();
         $tourcontent = DB::table('tours')->select('cities.name', 'tours.id', 'tours.paket', 'tours.durasi', 'tours.harga', 'tours.keterangan', 'tours.url', 'tours.fasilitas', 'tours.transportasi', 'tours.created_at')->leftjoin('cities', 'tours.city_id', '=', 'cities.id')->get();
         return view('admin.panel.content.edittour', compact('sql', 'contact', 'ordertour', 'ordertravel', 'member', 'notif', 'tour', 'city', 'tourcontent'));
+    }
+
+    public function statusTourContent($tour, $status)
+    {
+        $tour = tour::find($tour);
+        $update = $tour->update(['status'=>$status]);
+        if ($update) {
+            Session::flash('sukses', 'Successfully, updated!');
+            return back();
+        } else {
+            Session::flash('gagal', 'Failed to update!');
+            return back();
+        }
     }
 
     public function UpdateTourContent(Request $request, tour $tour)

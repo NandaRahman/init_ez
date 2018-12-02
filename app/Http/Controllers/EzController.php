@@ -28,7 +28,7 @@ class EzController extends Controller
             'city' => $ez
         ];
         $location = DB::table('markers')->get();
-        $sql = DB::table('tours')->select('cities.name', 'tours.id', 'tours.paket', 'tours.durasi', 'tours.harga', 'tours.keterangan', 'tours.url')->leftjoin('cities', 'tours.city_id', '=', 'cities.id')->get();
+        $sql = DB::table('tours')->select('cities.name', 'tours.id', 'tours.paket', 'tours.durasi', 'tours.harga', 'tours.keterangan', 'tours.url')->leftjoin('cities', 'tours.city_id', '=', 'cities.id')->where('tours.status',1)->get();
         $bandara = DB::table('bandaras')->get();
 //        dd($bandara);
         return view('ez/home', $data, compact('sql', 'location', 'bandara'));
@@ -51,7 +51,7 @@ class EzController extends Controller
         $data = [
             'city' => $ez
         ];
-        $sql = DB::table('tours')->get();
+        $sql = DB::table('tours')->where('tours.status',1)->get();
         $kotaID = Input::get('kota');
         $kota = City::find($kotaID);
         return view('ez/tour/tour', $data, compact('sql', 'kota'));

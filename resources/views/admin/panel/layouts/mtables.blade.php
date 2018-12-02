@@ -296,17 +296,15 @@
                 </li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-bus"></i> <span>Travels</span>
+                        <i class="fa fa-bus"></i> <span>Datas</span>
                         <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                          <i class="fa fa-angle-left pull-right"></i></span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{url('admin/travelcontent#addtravel')}}"><i
-                                        class="fa fa-pencil-square-o text-teal"></i> Add
-                                Travel</a></li>
-                        <li><a href="{{url('admin/travelcontent#travel')}}"><i class="fa fa-table text-teal"></i> View
-                                Travel</a>
+                        <li><a href="{{url('admin/travelcontent#addtravel')}}"><i class="fa fa-pencil-square-o text-teal"></i> Add Cars</a></li>
+                        <li><a href="{{url('admin/travelcontent#travel')}}"><i class="fa fa-table text-teal"></i> View Cars</a></li>
+                        <li><a href="{{url('admin/travelcontent#adddriver')}}"><i class="fa fa-pencil-square-o text-teal"></i> Add Driver</a></li>
+                        <li><a href="{{url('admin/travelcontent#driver')}}"><i class="fa fa-table text-teal"></i> View Drivers</a>
                     </ul>
                 </li>
             </ul>

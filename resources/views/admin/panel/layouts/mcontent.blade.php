@@ -283,7 +283,34 @@
                     </ul>
                 </li>
                 <li class="header">FOR USERS</li>
-                @yield('nav')
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-globe"></i> <span>Tours</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{url('admin/tourcontent#addtour')}}"><i
+                                        class="fa fa-pencil-square-o text-aqua"></i> Add Tour</a>
+                        </li>
+                        <li><a href="{{url('admin/tourcontent#tour')}}"><i class="fa fa-table text-aqua"></i> View Tour</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-bus"></i> <span>Datas</span>
+                        <span class="pull-right-container">
+                          <i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{url('admin/travelcontent#addtravel')}}"><i class="fa fa-pencil-square-o text-teal"></i> Add Cars</a></li>
+                        <li><a href="{{url('admin/travelcontent#travel')}}"><i class="fa fa-table text-teal"></i> View Cars</a></li>
+                        <li><a href="{{url('admin/travelcontent#adddriver')}}"><i class="fa fa-pencil-square-o text-teal"></i> Add Driver</a></li>
+                        <li><a href="{{url('admin/travelcontent#driver')}}"><i class="fa fa-table text-teal"></i> View Drivers</a>
+                    </ul>
+                </li>
             </ul>
         </section>
         <!-- /.sidebar -->

@@ -95,6 +95,7 @@
                                     <th>Paket</th>
                                     <th>Durasi</th>
                                     <th>Harga</th>
+                                    <th>Status</th>
                                     <th>Created_at</th>
                                     <th>Action</th>
                                 </tr>
@@ -110,6 +111,13 @@
                                         <td>{{$row->name.', '.$row->paket}}</td>
                                         <td>{{$row->durasi}}</td>
                                         <td>Rp{{$rupiah}}</td>
+                                        <td>
+                                            @if($row->status==1)
+                                                BUKA<br/><a href="{{url('admin/tourcontent/'.$row->id.'/status/0')}}"><button class="btn btn-danger"><i class="fa fa-check"></i> TUTUP</button></a>
+                                            @else
+                                                TUTUP<br/><a href="{{url('admin/tourcontent/'.$row->id.'/status/1')}}"><button class="btn btn-success"><i class="fa fa-check"></i> BUKA</button></a>
+                                            @endif
+                                        </td>
                                         <td>{{$row->created_at}}</td>
                                         <td>
                                             <a href="{{url('admin/tourcontent/'.$row->id.'/edit#tour')}}">
@@ -136,6 +144,7 @@
                                     <th>Paket</th>
                                     <th>Durasi</th>
                                     <th>Harga</th>
+                                    <th>Status</th>
                                     <th>Created_at</th>
                                     <th>Action</th>
                                 </tr>

@@ -75,7 +75,7 @@
                                     <div class="progress-circle"></div>
                                 </div>
                                 <div class="step step04 complete">
-                                    <progress class="progress" value="0" max="100"
+                                    <progress class="progress" value="100" max="100"
                                               aria-describedby="Step 04"></progress>
                                     <div class="progress-circle"></div>
                                 </div>
@@ -134,7 +134,39 @@
                                     }
                                 }, 1000);
                             </script>
-                            <br><br><br><br><br><br>
+                            <style>
+                                .loader {
+                                    border: 16px solid #f3f3f3;
+                                    border-radius: 50%;
+                                    border-top: 16px solid #3498db;
+                                    width: 120px;
+                                    height: 120px;
+                                    -webkit-animation: spin 2s linear infinite;
+                                    animation: spin 2s linear infinite;
+                                }
+
+                                @-webkit-keyframes spin {
+                                    0% {
+                                        -webkit-transform: rotate(0deg);
+                                    }
+                                    100% {
+                                        -webkit-transform: rotate(360deg);
+                                    }
+                                }
+
+                                @keyframes spin {
+                                    0% {
+                                        transform: rotate(0deg);
+                                    }
+                                    100% {
+                                        transform: rotate(360deg);
+                                    }
+                                }
+                            </style>
+                            <center>
+                                <div class="loader"></div>
+                            </center>
+                            <br><br><br>
                             <p>Setelah anda melakukan pembayaran, silahkan klik tombol dibawah ini</p>
                             <br>
                             <form class="form-horizontal" role="form" method="post" action="/ez/travel/travels">

@@ -13,7 +13,7 @@ class tour extends Model
     }
 
     protected $fillable = [
-        'url', 'city_id', 'paket', 'durasi', 'harga', 'keterangan', 'fasilitas', 'transportasi',
+        'url', 'city_id', 'paket', 'durasi', 'harga', 'keterangan', 'fasilitas', 'transportasi','status',
     ];
 
 }
