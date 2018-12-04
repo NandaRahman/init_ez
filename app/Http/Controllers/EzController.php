@@ -203,20 +203,26 @@ class EzController extends Controller
 
     public function showReviewTravelForm(Request $request)
     {
+        $bank = transferPayment::bankPayment();
+        $non_bank = transferPayment::non_bankPayment();
+
         $earlier = new \DateTime($request->tgl_berangkat);
         $later = new \DateTime($request->tgl_datang);
         $diff = $later->diff($earlier)->format("%a");
         $now = date("Y-m-d h:i:s");
         $durasi = ++$diff;
         $sql = DB::table('travelforms')->ORDERBY('id', 'desc')->LIMIT(1)->get();
-        return view('ez/travel/review', compact('request', 'sql', 'now','durasi'));
+        return view('ez/travel/review', compact('request', 'sql', 'now','durasi', 'bank', 'non_bank'));
     }
 
     public function showPaymentTravelForm(Request $request)
     {
+        $bank = transferPayment::bankPayment();
+        $non_bank = transferPayment::non_bankPayment();
+
         $sekarang = $request->now;
         $request->all();
-        return view('ez/travel/payment', compact('request', 'sekarang'));
+        return view('ez/travel/payment', compact('request', 'sekarang', 'bank', 'non_bank'));
     }
 
     public function travelstore(Request $request)
@@ -266,6 +272,11 @@ class EzController extends Controller
         <td>&nbsp;:&nbsp;&nbsp;</td>
         <td><strong>' . $travelform->name . '</strong></td>
         <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Driver</td>
+        <td>&nbsp;:&nbsp;&nbsp;</td>
+        <td><strong>'. (new \App\driver)->find($travelform->driver_id)->name.'</strong></td>
     </tr>
     <tr>
         <td>Operator</td>

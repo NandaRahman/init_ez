@@ -264,8 +264,8 @@
                                             height="40"></a>
                             </p>
                             <p>
-                                <b>Fitrotin</b>: fitrotindwi | 089675014272<br>
-                                <b>Adib</b>: Hafiizh04 | 087757232330
+                                <b>Faris</b>: fariszz | 089675014272<br>
+                                <b>Alvin</b>: alvin | 087757232330
                             </p>
                             <hr>
                             <div id="konfirmasi">

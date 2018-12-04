@@ -116,6 +116,17 @@
                                     <td><br>&nbsp;:&nbsp;&nbsp;</td>
                                     <td><br><strong>{{$request->phone}}</strong></td>
                                 </tr>
+                                <tr>
+                                    <td><br>Metode Pembayaran</td>
+                                    <td><br>&nbsp;:&nbsp;&nbsp;</td>
+                                    <td><br>
+                                        @if($request->payment_methods == "BCA" || $request->payment_methods == "Mandiri")
+                                            <strong>Transfer {{$request->payment_methods}}</strong>
+                                        @else
+                                            <strong>Melalui {{$request->payment_methods}}</strong>
+                                        @endif
+                                    </td>
+                                </tr>
                             </table>
                             <br>
                         </div>
@@ -257,6 +268,7 @@
                                     {{ csrf_field() }}
                                     <input type="hidden" name="name" value="{{$request->name}}">
                                     <input type="hidden" name="email" value="{{$request->email}}">
+                                    <input type="hidden" name="payment_methods" value="{{$request->payment_methods}}">
                                     <input type="hidden" name="nama_bandara" value="{{$request->nama_bandara}}">
                                     <input type="hidden" name="phone" value="{{$request->phone}}">
                                     <input type="hidden" name="total" value="{{$harga}}">

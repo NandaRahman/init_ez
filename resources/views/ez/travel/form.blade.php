@@ -113,11 +113,133 @@
                             <input type="hidden" class="form-control" name="total" value="{{$travel->harga}}" readonly>
                         </div>
                         @if($travel->tipe_travel != "Sewa_Mobil")
-                            <label class="control-label col-sm-2" for="tujuan">Kota Tujuan</label>
+                            <label class="control-label col-sm-2" for="tujuan">Tujuan</label>
                             <div class="col-sm-1">
                                 <input type="text" class="form-control" name="tujuan" value="{{$travel->tujuan}}" readonly>
                             </div>
                         @endif
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="payment">Metode Pembayaran</label>
+                        <div class="col-sm-6">
+                            <style>
+                                .payment-methods {
+                                    list-style: none;
+                                    margin: 0;
+                                    padding: 0;
+                                }
+
+                                .payment-methods:after {
+                                    content: "";
+                                    clear: both;
+                                }
+
+                                .payment-method {
+                                    border: 1px solid #ccc;
+                                    box-sizing: border-box;
+                                    float: left;
+                                    height: 70px;
+                                    position: relative;
+                                    width: 120px;
+                                }
+
+                                .payment-method label {
+                                    background: #fff no-repeat center center;
+                                    bottom: 1px;
+                                    cursor: pointer;
+                                    display: block;
+                                    font-size: 0;
+                                    left: 1px;
+                                    position: absolute;
+                                    right: 1px;
+                                    text-indent: 100%;
+                                    top: 1px;
+                                    white-space: nowrap;
+                                }
+
+                                .payment-method + .payment-method {
+                                    margin-left: 25px;
+                                }
+
+                                .bca label {
+                                    background-image: url({{asset('images/bca.jpg')}});
+                                    background-size: 100%;
+                                }
+
+                                .bri label {
+                                    background-image: url({{asset('images/bri.jpg')}});
+                                    background-size: 100%;
+                                }
+
+                                .bni label {
+                                    background-image: url({{asset('images/bni.jpg')}});
+                                    background-size: 100%;
+                                }
+
+                                .mandiri label {
+                                    background-image: url({{asset('images/mandiri.jpg')}});
+                                    background-size: 100%;
+                                }
+
+                                .alfamart label {
+                                    background-image: url({{asset('images/alfamart.jpg')}});
+                                    background-size: 100%;
+                                }
+
+                                .indomaret label {
+                                    background-image: url({{asset('images/indomaret.jpg')}});
+                                    background-size: 100%;
+                                }
+
+                                .payment-methods input:focus + label {
+                                    outline: 2px dotted #21b4d0;
+                                }
+
+                                .payment-methods input:checked + label {
+                                    outline: 4px solid #21b4d0;
+                                }
+
+                                .payment-methods input:checked + label:after {
+                                    background: url(https://dl.dropbox.com/s/vm6hpxjqbupy1xv/checked.png);
+                                    bottom: -10px;
+                                    content: "";
+                                    display: inline-block;
+                                    height: 20px;
+                                    position: absolute;
+                                    right: -10px;
+                                    width: 20px;
+                                }
+
+                                @-moz-document url-prefix() {
+                                    .payment-methods input:checked + label:after {
+                                        bottom: 0;
+                                        right: 0;
+                                        background-color: #21b4d0;
+                                    }
+                                }
+                            </style>
+                            <ul class="payment-methods">
+                                <li class="payment-method bca">
+                                    <input name="payment_methods" value="BCA" type="radio" id="bca" data-id="tf">
+                                    <label for="bca">BCA</label>
+                                </li>
+                                <li class="payment-method mandiri">
+                                    <input name="payment_methods" value="Mandiri" type="radio" id="mandiri"
+                                           data-id="tf">
+                                    <label for="mandiri">Mandiri</label>
+                                </li>
+                                <li class="payment-method alfamart">
+                                    <input name="payment_methods" value="Alfamart" type="radio" id="alfamart"
+                                           data-id="alfamart_form">
+                                    <label for="alfamart">Alfamart</label>
+                                </li>
+                                <li class="payment-method indomaret">
+                                    <input name="payment_methods" value="Indomaret" type="radio" id="indomaret"
+                                           data-id="indomaret_form">
+                                    <label for="indomaret">Indomaret</label>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="name">Nama Lengkap</label>
@@ -177,17 +299,7 @@
                         </div>
                     </div>
                     @if($travel->tipe_travel == "Sewa_Mobil")
-                    <div class="form-group form-inline col-md-12">
-                        <label class="control-label col-sm-3" for="date">Pilih Pengemudi</label>
-                        <div class="col-sm-6">
-                            <select class="form-control" name="driver_id" required>
-                                <option value="">Pilih Driver</option>
-                                @foreach($drivers as $driver)
-                                    <option value="{{$driver->id}}">{{$driver->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
+                        <input type="hidden" name="driver_id" value="{{\App\driver::inRandomOrder()->first()->id}}">
                     @endif
                     <div class="form-group form-inline col-md-12">
                         <label class="control-label col-sm-3" for="date">Tanggal Keberangkatan</label>

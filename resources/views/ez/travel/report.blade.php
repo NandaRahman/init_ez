@@ -116,6 +116,11 @@
                                         <td>&nbsp;</td>
                                     </tr>
                                     <tr>
+                                        <td>Driver</td>
+                                        <td>&nbsp;:&nbsp;&nbsp;</td>
+                                        <td><strong>{{\App\driver::find($travelform->driver_id)->name}}</strong></td>
+                                    </tr>
+                                    <tr>
                                         <td>Operator</td>
                                         <td>&nbsp;:&nbsp;&nbsp;</td>
                                         <td><strong>{{$travelform->operator}} &mdash; {{$travelform->jenis_kendaraan}}
