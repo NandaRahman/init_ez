@@ -102,7 +102,7 @@
                                         <td>@if(!empty($row->gambar_mobil)) {{$row->gambar_mobil}} @else Tidak Ada @endif</td>
                                         <td>
                                             <a onclick="return confirm('Are you sure wanna delete {{$row->nama}} ?')"
-                                               href="{{url('admin/driver/'.$row->id.'/delete')}}">
+                                               href="{{url('admin/travelcontent/'.$row->id.'/delete')}}">
                                                 <button class="btn btn-danger">
                                                     <i class="fa fa-trash" data-toggle="tooltip"
                                                        title="DELETE"></i>
@@ -268,7 +268,7 @@
                                             <td>{{$row->address}}</td>
                                             <td>
                                                 <a onclick="return confirm('Are you sure wanna delete {{$row->nama}} ?')"
-                                                   href="{{url('admin/travelcontent/'.$row->id.'/delete')}}">
+                                                   href="{{url('admin/driver/'.$row->id.'/delete')}}">
                                                     <button class="btn btn-danger">
                                                         <i class="fa fa-trash" data-toggle="tooltip"
                                                            title="DELETE"></i>

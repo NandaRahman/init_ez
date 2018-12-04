@@ -88,8 +88,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/tourcontent/{tour}/status/{status}', 'AdminController@statusTourContent');
 
     Route::post('/driver/add', 'AdminController@storeDriver')->name('admin.driver.add');
-    Route::get('/driver/{id}', 'AdminController@showDriverStatus')->name('admin.driver.edit');
-    Route::get('/driver/{driver}/delete', 'AdminController@showDriverStatus')->name('admin.driver.edit');
+    Route::get('/driver/{driver}/delete', 'AdminController@deleteDriver')->name('admin.driver.edit');
 
     Route::get('/travelcontent', 'AdminController@showTravelContent');
     Route::post('/travelcontent/adds', 'AdminController@storeTravelContent');
