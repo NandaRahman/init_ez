@@ -183,7 +183,7 @@ class EzController extends Controller
             "tujuan"=>$tujuan,
             "tipe_travel"=>$tipe_travel,
             "nama_bandara"=>$nama_bandara
-            ]);
+        ]);
         $sql = car::get();
         return view('ez/travel/travel', compact('sql', 'asal', 'tgl_berangkat', 'tipe_travel','tujuan'));
     }
@@ -191,12 +191,12 @@ class EzController extends Controller
     public function showTravelForm(Request $request)
     {
         $travel = json_decode(json_encode($request->all()+[
-            "asal"=>session('asal'),
-            "tgl_berangkat"=>session('tgl_berangkat'),
-            "tujuan"=>session('tujuan'),
-            "tipe_travel"=>session('tipe_travel'),
-            "nama_bandara"=>session('nama_bandara')
-        ]));
+                "asal"=>session('asal'),
+                "tgl_berangkat"=>session('tgl_berangkat'),
+                "tujuan"=>session('tujuan'),
+                "tipe_travel"=>session('tipe_travel'),
+                "nama_bandara"=>session('nama_bandara')
+            ]));
         $drivers = driver::all();
         return view('ez/travel/form', compact("travel","drivers"));
     }
@@ -272,13 +272,14 @@ class EzController extends Controller
         <td>&nbsp;:&nbsp;&nbsp;</td>
         <td><strong>' . $travelform->name . '</strong></td>
         <td>&nbsp;</td>
-    </tr>
-    <tr>
+    </tr>';
+        if ($travelform->tipe_travel == "Sewa_Mobil")
+            $html .= '<tr>
         <td>Driver</td>
         <td>&nbsp;:&nbsp;&nbsp;</td>
         <td><strong>'. (new \App\driver)->find($travelform->driver_id)->name.'</strong></td>
-    </tr>
-    <tr>
+    </tr>';
+        $html .= '<tr>
         <td>Operator</td>
         <td>&nbsp;:&nbsp;&nbsp;</td>
         <td><strong>' . $travelform->operator . ' &mdash; ' . $travelform->jenis_kendaraan . '

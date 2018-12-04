@@ -115,11 +115,13 @@
                                         <td><strong>{{$travelform->name}}</strong></td>
                                         <td>&nbsp;</td>
                                     </tr>
+                                    @if ($travelform->tipe_travel == "Sewa_Mobil")
                                     <tr>
                                         <td>Driver</td>
                                         <td>&nbsp;:&nbsp;&nbsp;</td>
                                         <td><strong>{{\App\driver::find($travelform->driver_id)->name}}</strong></td>
                                     </tr>
+                                    @endif
                                     <tr>
                                         <td>Operator</td>
                                         <td>&nbsp;:&nbsp;&nbsp;</td>
