@@ -80,27 +80,38 @@
                         @endif
                     <!-- /.box-header -->
                         <div class="box-body">
-                            <table id="example1" class="table table-bordered table-striped table-hover">
+                            <table id="example1" class="table table-bordered table-striped table-hover table-responsive">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>Gambar</th>
                                     <th>Merk</th>
                                     <th>Nopol</th>
-                                    <th>Kapasitas</th>
+                                    <th >Kapasitas</th>
                                     <th>Harga</th>
-                                    <th>Gambar</th>
+                                    <th>Armada</th>
+                                    <th>Kota</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($travelcontent as $row)
                                     <tr><?php $rupiah = number_format($row->harga, 2, ",", ".")?>
                                         <td>{{$row->id}}</td>
-                                        <td>{{$row->merk_mobil}}</td>
-                                        <td>{{$row->nopol_mobil}}</td>
-                                        <td>{{$row->kapasitas_mobil}}</td>
-                                        <td>{{$row->harga_mobil}}</td>
-                                        <td>@if(!empty($row->gambar_mobil)) {{$row->gambar_mobil}} @else Tidak Ada @endif</td>
+                                        <td>@if(!empty($row->gambar_mobil)) <img src="{{asset("mobil").'\/'.$row->gambar_mobil}}" height="50"> @else Tidak Ada @endif</td>
+                                        <td><input type="text" class="form-control" value="{{$row->merk_mobil}}" name="harga_mobil"  style="width: 120px;" form="edit-{{$row->id}}"/></td>
+                                        <td><input type="text" class="form-control" value="{{$row->nopol_mobil}}" name="nopol_mobil" style="width: 90px;" form="edit-{{$row->id}}"/></td>
+                                        <td><input type="number" class="form-control" value="{{$row->kapasitas_mobil}}" name="kapasitas_mobil" style="width: 50px;" form="edit-{{$row->id}}"/></td>
+                                        <td><input type="number" class="form-control" value="{{$row->harga_mobil}}" name="harga_mobil"  style="width: 100px;" form="edit-{{$row->id}}"/></td>
                                         <td>
+                                            <form id="edit-{{$row->id}}" action="{{url('admin/travelcontent/'.$row->id.'/update')}}" method="post">
+                                                <input type="number" class="form-control" value="{{$row->jumlah_total}}" name="jumlah_total"  style="width: 50px;"/>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary" form="edit-{{$row->id}}">
+                                                <i class="fa fa-edit" data-toggle="tooltip"
+                                                   title="EDIT"></i>
+                                            </button>
                                             <a onclick="return confirm('Are you sure wanna delete {{$row->nama}} ?')"
                                                href="{{url('admin/travelcontent/'.$row->id.'/delete')}}">
                                                 <button class="btn btn-danger">
@@ -115,11 +126,13 @@
                                 <tfoot>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Operator</th>
-                                    <th>Type</th>
-                                    <th>Keberangkatan</th>
-                                    <th>Kedatangan</th>
+                                    <th>Gambar</th>
+                                    <th>Merk</th>
+                                    <th>Nopol</th>
+                                    <th>Kapasitas</th>
                                     <th>Harga</th>
+                                    <th>Armada</th>
+                                    <th>Kota</th>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -141,7 +154,7 @@
                             <form method="post" class="form-horizontal" enctype="multipart/form-data" action="{{url('admin/travelcontent/adds')}}">
                                 {{ csrf_field() }}
                                 <div class="form-group{{ $errors->has('merk_mobil') ? ' has-error' : '' }} has-feedback">
-                                    <label for="inputName" class="col-sm-2 control-label">Car Types</label>
+                                    <label for="inputName" class="col-sm-2 control-label">Merek Mobil</label>
                                     <div class="col-sm-8">
                                         <input class="form-control" type="text" min="1" name="merk_mobil" required>
                                         <span class="glyphicon glyphicon-usd form-control-feedback"></span>
@@ -152,8 +165,32 @@
                                         @endif
                                     </div>
                                 </div>
+                                <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }} has-feedback">
+                                    <label for="inputName" class="col-sm-2 control-label">Kota</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" min="1" name="city" required>
+                                        <span class="glyphicon glyphicon-usd form-control-feedback"></span>
+                                        @if ($errors->has('city'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('city') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="form-group{{ $errors->has('jumlah_total') ? ' has-error' : '' }} has-feedback">
+                                    <label for="inputName" class="col-sm-2 control-label">Total Armada</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" min="1" name="jumlah_total" required>
+                                        <span class="glyphicon glyphicon-usd form-control-feedback"></span>
+                                        @if ($errors->has('jumlah_total'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('jumlah_total') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
                                 <div class="form-group{{ $errors->has('nopol_mobil') ? ' has-error' : '' }} has-feedback">
-                                    <label for="inputName" class="col-sm-2 control-label">Car License Plate</label>
+                                    <label for="inputName" class="col-sm-2 control-label">Plat Nomor</label>
                                     <div class="col-sm-8">
                                         <input class="form-control" type="text" min="1" name="nopol_mobil" required>
                                         <span class="glyphicon glyphicon-usd form-control-feedback"></span>
@@ -165,7 +202,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group{{ $errors->has('kapasitas_mobil') ? ' has-error' : '' }} has-feedback">
-                                    <label for="inputName" class="col-sm-2 control-label">Car Capacity</label>
+                                    <label for="inputName" class="col-sm-2 control-label">Kapasitas</label>
                                     <div class="col-sm-8">
                                         <input class="form-control" type="number" min="1" name="kapasitas_mobil" required>
                                         <span class="glyphicon glyphicon-usd form-control-feedback"></span>
@@ -177,7 +214,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group{{ $errors->has('harga_mobil') ? ' has-error' : '' }} has-feedback">
-                                    <label for="inputName" class="col-sm-2 control-label">Car Price</label>
+                                    <label for="inputName" class="col-sm-2 control-label">Harga</label>
                                     <div class="col-sm-8">
                                         <input class="form-control" type="number" min="1" name="harga_mobil" required>
                                         <span class="glyphicon glyphicon-usd form-control-feedback"></span>
@@ -189,7 +226,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group{{ $errors->has('gambar_mobil') ? ' has-error' : '' }} has-feedback">
-                                    <label for="inputName" class="col-sm-2 control-label">Car Image</label>
+                                    <label for="inputName" class="col-sm-2 control-label">Image</label>
                                     <div class="col-sm-8">
                                         <input class="form-control" type="file" min="1" name="gambar_mobil" required>
                                         <span class="glyphicon glyphicon-usd form-control-feedback"></span>

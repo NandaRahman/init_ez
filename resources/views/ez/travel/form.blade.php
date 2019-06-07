@@ -98,6 +98,8 @@
                 <br>
                 <form class="form-horizontal" role="form" method="get" action="/ez/travel/review">
                     {{ csrf_field() }}
+                    <input type="hidden" name="car_id" value="{{$travel->car_id}}">
+
                     <div class="form-group form-inline col-md-12">
                         @if($travel->tipe_travel == "Sewa_Mobil")
                             <label class="control-label col-sm-3" for="asal">Kota Keberangkatan</label>

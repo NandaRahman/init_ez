@@ -93,6 +93,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/travelcontent', 'AdminController@showTravelContent');
     Route::post('/travelcontent/adds', 'AdminController@storeTravelContent');
     Route::get('/travelcontent/{travel}/edit', 'AdminController@showEditTravelForm');
-    Route::put('/travelcontent/{travel}', 'AdminController@UpdateTravelContent');
+    Route::post('/travelcontent/{travel}/update', 'AdminController@UpdateTravelContent');
     Route::get('/travelcontent/{travel}/delete', 'AdminController@deleteTravelContent');
 });

@@ -266,6 +266,7 @@
                                 <h3>Lanjut ke Pembayaran</h3>
                                 <form class="form-horizontal" role="form" method="get" action="/ez/travel/payment">
                                     {{ csrf_field() }}
+                                    <input type="hidden" name="car_id" value="{{$request->car_id}}">
                                     <input type="hidden" name="name" value="{{$request->name}}">
                                     <input type="hidden" name="email" value="{{$request->email}}">
                                     <input type="hidden" name="payment_methods" value="{{$request->payment_methods}}">

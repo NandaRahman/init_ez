@@ -184,7 +184,18 @@ class EzController extends Controller
             "tipe_travel"=>$tipe_travel,
             "nama_bandara"=>$nama_bandara
         ]);
-        $sql = car::get();
+        $city = null;
+        if(!empty($asal)){
+            $city = $asal;
+        } else if (!empty($tujuan)) {
+            $city = $tujuan;
+        } else {
+            $city = false;
+        }
+        if ($city != false)
+            $sql = car::whereRaw("city LIKE '%".strtoupper($city)."%'")->get();
+        else
+            $sql = car::get();
         return view('ez/travel/travel', compact('sql', 'asal', 'tgl_berangkat', 'tipe_travel','tujuan'));
     }
 
@@ -227,8 +238,13 @@ class EzController extends Controller
 
     public function travelstore(Request $request)
     {
-        travelform::create($request->all());
-        return redirect('ez/travel/process');
+        $car = car::all()->where("id","=",$request->car_id)->first();
+        if ($car->available_car() > 0){
+            travelform::create($request->all());
+            return redirect('ez/travel/process');
+        } else {
+            return redirect('ez/travel/failed');
+        }
     }
 
     public function showProcessTravelForm()

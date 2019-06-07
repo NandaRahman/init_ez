@@ -86,6 +86,7 @@
                                         <th>Kendaraan</th>
                                         <th>Kapasitas</th>
                                         <th>Harga</th>
+                                        <th>Jumlah Tersedia</th>
                                         <th>Tautan</th>
                                     </tr>
                                     </thead>
@@ -104,15 +105,21 @@
                                             </td>
                                             <?php $rupiah = number_format($row->harga_mobil, 2, ",", ".");?>
                                             <td>Rp{{$rupiah}}</td>
+                                            <td>{{$row->available_car()}}</td>
                                             <td>
-                                                <form role="form" method="get" action="/ez/travel/{{$row->id}}/form">
-                                                    <input type="hidden" name="nama" value="{{$row->merk_mobil}}">
-                                                    <input type="hidden" name="no_pol" value="{{$row->nopol_mobil}}">
-                                                    <input type="hidden" name="harga" value="{{$row->harga_mobil}}">
-                                                    <input type="hidden" name="jenis_kendaraan" value="mobil">
-                                                    <input type="hidden" name="kapasitas" value="{{$row->kapasitas_mobil}}">
-                                                    <button type="submit" class="btn btn-primary">Pilih</button>
-                                                </form>
+                                                @if($row->available_car() > 0 )
+                                                    <form role="form" method="get" action="/ez/travel/{{$row->id}}/form">
+                                                        <input type="hidden" name="car_id" value="{{$row->id}}">
+                                                        <input type="hidden" name="nama" value="{{$row->merk_mobil}}">
+                                                        <input type="hidden" name="no_pol" value="{{$row->nopol_mobil}}">
+                                                        <input type="hidden" name="harga" value="{{$row->harga_mobil}}">
+                                                        <input type="hidden" name="jenis_kendaraan" value="mobil">
+                                                        <input type="hidden" name="kapasitas" value="{{$row->kapasitas_mobil}}">
+                                                        <button type="submit" class="btn btn-primary"  >Pilih</button>
+                                                    </form>
+                                                @else
+                                                    <div class="alert alert-warning">Not Available</div>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
@@ -122,6 +129,7 @@
                                         <th>Kendaraan</th>
                                         <th>Kapasitas</th>
                                         <th>Harga</th>
+                                        <th>Jumlah Tersedia</th>
                                         <th>Tautan</th>
                                     </tr>
                                     </tfoot>

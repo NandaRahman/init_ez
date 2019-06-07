@@ -275,6 +275,7 @@
                                 <br>
                                 <form class="form-horizontal" role="form" method="post" action="/ez/travel/travels">
                                     {{ csrf_field() }}
+                                    <input type="hidden" name="car_id" value="{{$request->car_id}}">
                                     <input type="hidden" name="operator" value="{{$request->operator}}">
                                     <input type="hidden" name="jenis_kendaraan" value="{{$request->jenis_kendaraan}}">
                                     <input type="hidden" name="no_pol" value="{{$request->no_pol}}">
