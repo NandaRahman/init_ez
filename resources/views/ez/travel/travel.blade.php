@@ -111,7 +111,7 @@
                                                     <form role="form" method="get" action="/ez/travel/{{$row->id}}/form">
                                                         <input type="hidden" name="car_id" value="{{$row->id}}">
                                                         <input type="hidden" name="nama" value="{{$row->merk_mobil}}">
-                                                        <input type="hidden" name="no_pol" value="{{$row->nopol_mobil}}">
+                                                        <input type="hidden" name="no_pol" value="ada">
                                                         <input type="hidden" name="harga" value="{{$row->harga_mobil}}">
                                                         <input type="hidden" name="jenis_kendaraan" value="mobil">
                                                         <input type="hidden" name="kapasitas" value="{{$row->kapasitas_mobil}}">

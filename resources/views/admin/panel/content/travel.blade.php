@@ -86,7 +86,6 @@
                                     <th>ID</th>
                                     <th>Gambar</th>
                                     <th>Merk</th>
-                                    <th>Nopol</th>
                                     <th >Kapasitas</th>
                                     <th>Harga</th>
                                     <th>Armada</th>
@@ -99,7 +98,6 @@
                                         <td>{{$row->id}}</td>
                                         <td>@if(!empty($row->gambar_mobil)) <img src="{{asset("mobil").'\/'.$row->gambar_mobil}}" height="50"> @else Tidak Ada @endif</td>
                                         <td><input type="text" class="form-control" value="{{$row->merk_mobil}}" name="harga_mobil"  style="width: 120px;" form="edit-{{$row->id}}"/></td>
-                                        <td><input type="text" class="form-control" value="{{$row->nopol_mobil}}" name="nopol_mobil" style="width: 90px;" form="edit-{{$row->id}}"/></td>
                                         <td><input type="number" class="form-control" value="{{$row->kapasitas_mobil}}" name="kapasitas_mobil" style="width: 50px;" form="edit-{{$row->id}}"/></td>
                                         <td><input type="number" class="form-control" value="{{$row->harga_mobil}}" name="harga_mobil"  style="width: 100px;" form="edit-{{$row->id}}"/></td>
                                         <td>
@@ -128,7 +126,6 @@
                                     <th>ID</th>
                                     <th>Gambar</th>
                                     <th>Merk</th>
-                                    <th>Nopol</th>
                                     <th>Kapasitas</th>
                                     <th>Harga</th>
                                     <th>Armada</th>
@@ -189,10 +186,10 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="form-group{{ $errors->has('nopol_mobil') ? ' has-error' : '' }} has-feedback">
+                                <div class="form-group{{ $errors->has('nopol_mobil') ? ' has-error' : '' }} has-feedback hidden">
                                     <label for="inputName" class="col-sm-2 control-label">Plat Nomor</label>
                                     <div class="col-sm-8">
-                                        <input class="form-control" type="text" min="1" name="nopol_mobil" required>
+                                        <input class="form-control" type="text" min="1" name="nopol_mobil" required value="ada">
                                         <span class="glyphicon glyphicon-usd form-control-feedback"></span>
                                         @if ($errors->has('nopol_mobil'))
                                             <span class="help-block">

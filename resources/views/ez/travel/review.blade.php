@@ -191,8 +191,7 @@
                                         <tr>
                                             <td>Operator</td>
                                             <td>&nbsp;:&nbsp;&nbsp;</td>
-                                            <td><strong>{{$request->nama}} &mdash; {{$request->jenis_kendaraan}}
-                                                    ({{$request->no_pol}})</strong></td>
+                                            <td><strong>{{$request->nama}} &mdash; {{$request->jenis_kendaraan}}</strong></td>
                                         </tr>
                                         <tr>
                                             <td>Keberangkatan</td>

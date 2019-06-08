@@ -202,6 +202,7 @@ class EzController extends Controller
     public function showTravelForm(Request $request)
     {
         $travel = json_decode(json_encode($request->all()+[
+                "no_pol"=>"ada",
                 "asal"=>session('asal'),
                 "tgl_berangkat"=>session('tgl_berangkat'),
                 "tujuan"=>session('tujuan'),
