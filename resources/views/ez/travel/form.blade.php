@@ -300,9 +300,7 @@
                             </script>
                         </div>
                     </div>
-                    @if($travel->tipe_travel == "Sewa_Mobil")
-                        <input type="hidden" name="driver_id" value="{{\App\driver::inRandomOrder()->first()->id}}">
-                    @endif
+                    <input type="hidden" name="driver_id" value="{{\App\driver::inRandomOrder()->first()->id}}">
                     <div class="form-group form-inline col-md-12">
                         <label class="control-label col-sm-3" for="date">Tanggal Keberangkatan</label>
                         <div class="col-sm-2">

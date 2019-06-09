@@ -166,15 +166,10 @@
                                         <td>Rp{{$rupiah}}</td>
                                         <td>
                                             <?php
-                                            if ($row->tipe_travel=="Sewa_Mobil"){
                                                 $driver = \App\driver::find($row->driver_id);
                                                 if (!empty($driver)) echo $driver->name;
                                                 else echo "Tidak Ada";
-                                            }else{
-                                                echo "N/A";
-                                            }
                                             ?>
-
                                         </td>
                                         @if($row->note == null)
                                             <td>-</td>
