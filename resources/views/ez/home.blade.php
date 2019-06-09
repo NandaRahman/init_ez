@@ -185,7 +185,12 @@
                                 <div class="col-xs-4">
                                     <div class="col-xs-12 form-group">
                                         <label for="returnCity">Tujuan</label>
-                                        <input type="text" name="tujuan" class="form-control">
+                                        <select class="form-control" name="tujuan" required>
+                                            <option value="" selected disabled>-- Pilih Kota --</option>
+                                            @foreach($city as $row)
+                                                <option value="{{$row->name}}">{{$row->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <button type="submit" class="col-xs-12 btn btn-primary btn-block">CARI TRANSPORTASI BANDARA<i
                                                 class="glyphicon glyphicon-chevron-right"></i></button>

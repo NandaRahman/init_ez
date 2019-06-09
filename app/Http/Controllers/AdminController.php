@@ -377,7 +377,6 @@ class AdminController extends Controller
             "merk_mobil"=>$request->merk_mobil,
             "jumlah_total"=>$request->jumlah_total,
             "city"=>strtoupper($request->city),
-            "nopol_mobil"=>$request->nopol_mobil,
             "kapasitas_mobil"=>$request->kapasitas_mobil,
             "harga_mobil"=>$request->harga_mobil,
             "gambar_mobil"=>$photoName,

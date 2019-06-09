@@ -106,7 +106,18 @@
                                                 <input type="number" class="form-control" value="{{$row->jumlah_total}}" name="jumlah_total"  style="width: 50px;"/>
                                             </form>
                                         </td>
-                                        <td><input type="text" class="form-control" value="{{$row->city}}" name="city"  style="width: 120px;" form="edit-{{$row->id}}"/></td>
+                                        <td>
+                                            <select class="form-control" name="city" required>
+                                                <option value="" selected disabled>-- Pilih Kota --</option>
+                                                @foreach($city as $row2)
+                                                    @if(strtoupper($row2->name) == strtoupper($row->city))
+                                                        <option selected value="{{$row2->name}}">{{$row2->name}}</option>
+                                                    @else
+                                                        <option value="{{$row2->name}}">{{$row2->name}}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </td>
                                         <td>
                                             <button class="btn btn-primary" form="edit-{{$row->id}}">
                                                 <i class="fa fa-edit" data-toggle="tooltip"
@@ -168,7 +179,12 @@
                                 <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }} has-feedback">
                                     <label for="inputName" class="col-sm-2 control-label">Kota</label>
                                     <div class="col-sm-8">
-                                        <input class="form-control" type="text" min="1" name="city" required>
+                                        <select class="form-control" name="city" required>
+                                            <option value="" selected disabled>-- Pilih Kota --</option>
+                                            @foreach($city as $row)
+                                                <option value="{{$row->name}}">{{$row->name}}</option>
+                                            @endforeach
+                                        </select>
                                         <span class="glyphicon glyphicon-usd form-control-feedback"></span>
                                         @if ($errors->has('city'))
                                             <span class="help-block">
@@ -185,18 +201,6 @@
                                         @if ($errors->has('jumlah_total'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('jumlah_total') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="form-group{{ $errors->has('nopol_mobil') ? ' has-error' : '' }} has-feedback hidden">
-                                    <label for="inputName" class="col-sm-2 control-label">Plat Nomor</label>
-                                    <div class="col-sm-8">
-                                        <input class="form-control" type="text" min="1" name="nopol_mobil" required value="ada">
-                                        <span class="glyphicon glyphicon-usd form-control-feedback"></span>
-                                        @if ($errors->has('nopol_mobil'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('nopol_mobil') }}</strong>
                                             </span>
                                         @endif
                                     </div>
