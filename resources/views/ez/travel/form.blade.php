@@ -117,7 +117,7 @@
                         @if($travel->tipe_travel != "Sewa_Mobil")
                             <label class="control-label col-sm-2" for="tujuan">Tujuan</label>
                             <div class="col-sm-1">
-                                <input type="text" class="form-control" name="tujuan" value="{{$travel->tujuan}}" readonly>
+                                <input type="text" class="form-control" name="tujuan" value="">
                             </div>
                         @endif
                     </div>

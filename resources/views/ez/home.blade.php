@@ -184,8 +184,8 @@
                                 </div>
                                 <div class="col-xs-4">
                                     <div class="col-xs-12 form-group">
-                                        <label for="returnCity">Tujuan</label>
-                                        <select class="form-control" name="tujuan" required>
+                                        <label for="returnCity">Kota</label>
+                                        <select class="form-control" name="asal" required>
                                             <option value="" selected disabled>-- Pilih Kota --</option>
                                             @foreach($city as $row)
                                                 <option value="{{$row->name}}">{{$row->name}}</option>
