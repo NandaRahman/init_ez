@@ -95,7 +95,6 @@
                                     @foreach($sql as $row)
                                         <tr>
                                             <td><strong><h3>{{$row->merk_mobil}}</h3></strong>
-                                                <strong><h5>Nomor Polisi: {{$row->nopol_mobil}}</h5></strong>
                                                 <img height="150" src="{{asset("mobil")}}\{{$row->gambar_mobil}}" alt="{{asset("mobil")}}\{{$row->gambar_mobil}}">
                                             </td>
                                             <td>
