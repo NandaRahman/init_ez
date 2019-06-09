@@ -298,8 +298,7 @@ class EzController extends Controller
         $html .= '<tr>
         <td>Operator</td>
         <td>&nbsp;:&nbsp;&nbsp;</td>
-        <td><strong>' . $travelform->operator . ' &mdash; ' . $travelform->jenis_kendaraan . '
-            (' . $travelform->no_pol . ')</strong></td>
+        <td><strong>' . $travelform->operator . ' &mdash; ' . $travelform->jenis_kendaraan . '</strong></td>
     </tr>
     <tr>
         <td>Keberangkatan</td>

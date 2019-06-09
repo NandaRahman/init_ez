@@ -64,7 +64,7 @@
             <td>{{$row->name}}</td>
             <td>{{$row->handphone}}</td>
             <td>{{$row->operator}}</td>
-            <td>{{$row->jenis_kendaraan.' ('.$row->no_pol.')'}}</td>
+            <td>{{$row->jenis_kendaraan}}</td>
             <td>{{$row->asal.' ('.$row->tgl_keberangkatan.' &mdash; '.$row->jadwal_keberangkatan.')'}}</td>
             <td>{{$row->tujuan.' ('.$row->tgl_datang.' &mdash; '.$row->jadwal_datang.')'}}</td>
             <td>Rp{{$rupiah}}</td>
