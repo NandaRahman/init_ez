@@ -275,7 +275,6 @@
                                     <input type="hidden" name="operator" value="{{$request->nama}}">
                                     <input type="hidden" name="jenis_kendaraan" value="{{$request->jenis_kendaraan}}">
                                     <input type="hidden" name="tipe_travel" value="{{$request->tipe_travel}}">
-                                    <input type="hidden" name="no_pol" value="{{$request->no_pol}}">
                                     <input type="hidden" name="durasi" value="{{$durasi}}">
                                     @if($request->tipe_travel == "Sewa_Mobil")
                                         <input type="hidden" name="asal" value="{{$request->asal}}">

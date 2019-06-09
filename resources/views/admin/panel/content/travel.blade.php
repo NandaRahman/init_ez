@@ -86,10 +86,11 @@
                                     <th>ID</th>
                                     <th>Gambar</th>
                                     <th>Merk</th>
-                                    <th >Kapasitas</th>
+                                    <th>Kapasitas</th>
                                     <th>Harga</th>
                                     <th>Armada</th>
                                     <th>Kota</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -105,6 +106,7 @@
                                                 <input type="number" class="form-control" value="{{$row->jumlah_total}}" name="jumlah_total"  style="width: 50px;"/>
                                             </form>
                                         </td>
+                                        <td><input type="text" class="form-control" value="{{$row->city}}" name="city"  style="width: 120px;" form="edit-{{$row->id}}"/></td>
                                         <td>
                                             <button class="btn btn-primary" form="edit-{{$row->id}}">
                                                 <i class="fa fa-edit" data-toggle="tooltip"
@@ -130,6 +132,7 @@
                                     <th>Harga</th>
                                     <th>Armada</th>
                                     <th>Kota</th>
+                                    <th>Action</th>
                                 </tr>
                                 </tfoot>
                             </table>

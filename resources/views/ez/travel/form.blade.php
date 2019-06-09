@@ -323,7 +323,6 @@
                         <label class="control-label col-sm-3" for="total">Jumlah Penumpang</label>
                         <div class="col-sm-2">
                             <input type="hidden" name="nama" value="{{$travel->nama}}">
-                            <input type="hidden" name="no_pol" value="{{$travel->no_pol}}">
                             <input type="hidden" name="jenis_kendaraan" value="{{$travel->jenis_kendaraan}}">
                             <input min="1" max="{{$travel->kapasitas}}" type="number" class="form-control" name="jml_penumpang" placeholder="{{$travel->kapasitas}}" required>
                         </div>
